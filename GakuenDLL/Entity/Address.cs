@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    class Address : AbstractEntity
+    public class Address : AbstractEntity
     {
         public string Street1 { get; set; }
         public string Street2 { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    class Schedule
+    public class Schedule
     {
     }
 }

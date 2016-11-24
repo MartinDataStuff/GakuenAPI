@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,39 +9,39 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class UserRepository : IRepository<User>
+    class NewsMessageRepository : IRepository<NewsMessage>
     {
-        public User Create(User o)
+        public NewsMessage Create(NewsMessage o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users == null)
+                if (db.NewsMessages == null)
                     return null;
-                db.Users.Add(o);
+                db.NewsMessages.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<User> ReadAll()
+        public List<NewsMessage> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users != null)
-                    return db.Users.Include(user => user.Address).Include(user => user.Schedule).ToList();
-                return new List<User>();
+                if (db.NewsMessages != null)
+                    return db.NewsMessages.ToList();
+                return new List<NewsMessage>();
             }
         }
 
-        public User Read(int id)
+        public NewsMessage Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.Users.Include("Address").Include("Schedule").FirstOrDefault(customer => customer.Id == id);
+                return db.NewsMessages.FirstOrDefault(message => message.Id == id);
             }
         }
 
-        public User Update(User o)
+        public NewsMessage Update(NewsMessage o)
         {
             using (var db = new GakuenContext())
             {
@@ -53,7 +51,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(User o)
+        public bool Delete(NewsMessage o)
         {
             using (var db = new GakuenContext())
             {

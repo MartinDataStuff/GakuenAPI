@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,39 +9,39 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class UserRepository : IRepository<User>
+    class ScheduleRepository : IRepository<Schedule>
     {
-        public User Create(User o)
+        public Schedule Create(Schedule o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users == null)
+                if (db.Schedules == null)
                     return null;
-                db.Users.Add(o);
+                db.Schedules.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<User> ReadAll()
+        public List<Schedule> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users != null)
-                    return db.Users.Include(user => user.Address).Include(user => user.Schedule).ToList();
-                return new List<User>();
+                if (db.Schedules != null)
+                    return db.Schedules.ToList();
+                return new List<Schedule>();
             }
         }
 
-        public User Read(int id)
+        public Schedule Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.Users.Include("Address").Include("Schedule").FirstOrDefault(customer => customer.Id == id);
+                return db.Schedules.FirstOrDefault(schedule => schedule.Id == id);
             }
         }
 
-        public User Update(User o)
+        public Schedule Update(Schedule o)
         {
             using (var db = new GakuenContext())
             {
@@ -53,7 +51,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(User o)
+        public bool Delete(Schedule o)
         {
             using (var db = new GakuenContext())
             {

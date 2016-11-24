@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    class NewsMessage
+    public class NewsMessage : AbstractEntity
     {
         public string Title { get; set; }
         public string Body { get; set; }

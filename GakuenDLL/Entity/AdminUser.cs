@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    public class EventMessage : AbstractEntity
+    class AdminUser
     {
-        public string Title { get; set; }
-        public string Body { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -31,5 +31,10 @@ namespace GakuenDLL.Facade
             return new EventMessageRepository();
         }
 
+        public IRepository<AdminUser> GetAdminUserRepository()
+        {
+            return new AdminUserRepository();
+        }
+
     }
 }

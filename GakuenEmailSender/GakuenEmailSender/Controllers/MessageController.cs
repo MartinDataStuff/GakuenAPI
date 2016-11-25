@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Net;
 using System.Net.Mail;
-using System.Text;
-using GakuenAPI.Models;
+using System.Web.Http;
+using GakuenEmailSender.Models;
 
-namespace GakuenAPI.Controllers
+namespace GakuenEmailSender.Controllers
 {
     public class MessageController : ApiController
     {
@@ -41,6 +36,8 @@ namespace GakuenAPI.Controllers
                 smtp.EnableSsl = true;
                 smtp.SendMailAsync(mailMessage);
             }
+
+
 
             return CreatedAtRoute("DefaultApi", new { id = message.Id }, message);
         }

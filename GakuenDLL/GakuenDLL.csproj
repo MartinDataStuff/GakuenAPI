@@ -61,6 +61,7 @@
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\AdminUserRepository.cs" />
     <Compile Include="Repository\EventMessageRepository.cs" />
     <Compile Include="Repository\NewsMessageRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />

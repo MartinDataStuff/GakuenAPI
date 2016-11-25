@@ -21,6 +21,8 @@ namespace GakuenDLL.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
 
+        public DbSet<AdminUser> AdminUsers { get; set; }
+
         public DbSet<NewsMessage> NewsMessages { get; set; }
         public DbSet<EventMessage> EventMessages { get; set; }
     }

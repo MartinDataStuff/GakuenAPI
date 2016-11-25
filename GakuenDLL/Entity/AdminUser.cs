@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    class AdminUser
+    public class AdminUser : AbstractEntity
     {
         public string UserName { get; set; }
         public string Email { get; set; }

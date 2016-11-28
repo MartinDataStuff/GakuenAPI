@@ -10,13 +10,16 @@ namespace GakuenDLL.Entity
     [Table("User")]
     public class User : AbstractEntity
     {
-
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
         public string PhoneNr { get; set; }
+
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+        public bool Confirmed { get; set; }
+        public string PaidStringCode { get; set; }
 
         [ForeignKey("Address")]
         public int AddressId { get; set; }

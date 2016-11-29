@@ -54,6 +54,7 @@
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\AdminUser.cs" />
     <Compile Include="Entity\EventMessage.cs" />
+    <Compile Include="Entity\Image.cs" />
     <Compile Include="Entity\NewsMessage.cs" />
     <Compile Include="Entity\Schedule.cs" />
     <Compile Include="Entity\User.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\AdminUserRepository.cs" />
     <Compile Include="Repository\EventMessageRepository.cs" />
+    <Compile Include="Repository\ImageRepository.cs" />
     <Compile Include="Repository\NewsMessageRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />

@@ -36,5 +36,11 @@ namespace GakuenDLL.Facade
             return new AdminUserRepository();
         }
 
+        public IRepository<Image> GetImageRepository()
+        {
+            return new ImageRepository(); 
+            
+        }
+
     }
 }

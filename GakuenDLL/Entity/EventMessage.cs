@@ -10,5 +10,6 @@ namespace GakuenDLL.Entity
     {
         public string Title { get; set; }
         public string Body { get; set; }
+        public Image Image { get; set; }
     }
 }

@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    public class NewsMessage : AbstractEntity
+    public class Image : AbstractEntity
     {
-        public string Title { get; set; }
-        public string Body { get; set; }
-        public Image Image { get; set; }
+        public string ImageName { get; set; }
+        public byte[] Bytes { get; set; }
     }
 }

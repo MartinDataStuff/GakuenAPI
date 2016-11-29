@@ -9,39 +9,39 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class AddressRepository : IRepository<Address>
+    class ImageRepository : IRepository<Image>
     {
-        public Address Create(Address o)
+        public Image Create(Image o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.Addresses == null)
+                if (db.Images == null)
                     return null;
-                db.Addresses.Add(o);
+                db.Images.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<Address> ReadAll()
+        public List<Image> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.Addresses != null)
-                    return db.Addresses.ToList();
-                return new List<Address>();
+                if (db.Images != null)
+                    return db.Images.ToList();
+                return new List<Image>();
             }
         }
 
-        public Address Read(int id)
+        public Image Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.Addresses.FirstOrDefault(address => address.Id == id);
+                return db.Images.FirstOrDefault(image => image.Id == id);
             }
         }
 
-        public Address Update(Address o)
+        public Image Update(Image o)
         {
             using (var db = new GakuenContext())
             {
@@ -51,7 +51,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(Address o)
+        public bool Delete(Image o)
         {
             using (var db = new GakuenContext())
             {

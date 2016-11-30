@@ -10,30 +10,29 @@ namespace GakuenDLL.Entity
     [Table("User")]
     public class User : AbstractEntity
     {
+        //Personal Information
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNr { get; set; }
-
-        public string UserName { get; set; }
-        public string Password { get; set; }
-
-        public bool Confirmed { get; set; }
-        public string PaidStringCode { get; set; }
-
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
         public Address Address { get; set; }
 
-        [ForeignKey("Schedule")]
-        public int ScheduleId { get; set; }
-        public Schedule Schedule { get; set; }
+        //Login information
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        //Whether the user has accepted the confirm email
+        public bool ConfirmedUser { get; set; }
+        
+        
+        //Shop oriented propaties
+        public List<OrderList> OrderLists { get; set; } = new List<OrderList>();
 
+        //School oriented propaties
+        public Schedule Schedule { get; set; }
         public enum Positions
         {
             Teacher, Student
         }
-
         public Positions Position { get; set; }
     }
 

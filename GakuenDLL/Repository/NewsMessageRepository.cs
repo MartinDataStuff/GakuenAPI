@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace GakuenDLL.Repository
             using (var db = new GakuenContext())
             {
                 if (db.NewsMessages != null)
-                    return db.NewsMessages.ToList();
+                    return db.NewsMessages.Include(newsMessage => newsMessage.ImageToHost).ToList();
                 return new List<NewsMessage>();
             }
         }
@@ -37,7 +38,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.NewsMessages.FirstOrDefault(message => message.Id == id);
+                return db.NewsMessages.Include("ImageToHost").FirstOrDefault(message => message.Id == id);
             }
         }
 

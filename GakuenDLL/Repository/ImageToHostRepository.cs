@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,39 +12,51 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class EventMessageRepository : IRepository<EventMessage>
+    class ImageToHostRepository : IRepository<ImageToHost>
     {
-        public EventMessage Create(EventMessage o)
+        public ImageToHost Create(ImageToHost o)
         {
+            //Convert Image to Bytes
+            //byte[] imgBytes;
+            //var loadedImage =
+            //    Image.FromFile(o.ImagePath);
+
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    loadedImage.Save(ms, ImageFormat.Jpeg);
+            //    imgBytes = ms.ToArray();
+            //}
+            //o.Bytes = imgBytes;
+
             using (var db = new GakuenContext())
             {
-                if (db.EventMessages == null)
+                if (db.Images == null)
                     return null;
-                db.EventMessages.Add(o);
+                db.Images.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<EventMessage> ReadAll()
+        public List<ImageToHost> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.EventMessages != null)
-                    return db.EventMessages.Include(eventMessage => eventMessage.ImageToHost).ToList();
-                return new List<EventMessage>();
+                if (db.Images != null)
+                    return db.Images.ToList();
+                return new List<ImageToHost>();
             }
         }
 
-        public EventMessage Read(int id)
+        public ImageToHost Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.EventMessages.Include("ImageToHost").FirstOrDefault(message => message.Id == id);
+                return db.Images.FirstOrDefault(image => image.Id == id);
             }
         }
 
-        public EventMessage Update(EventMessage o)
+        public ImageToHost Update(ImageToHost o)
         {
             using (var db = new GakuenContext())
             {
@@ -52,7 +66,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(EventMessage o)
+        public bool Delete(ImageToHost o)
         {
             using (var db = new GakuenContext())
             {

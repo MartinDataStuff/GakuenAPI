@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,39 +9,39 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class EventMessageRepository : IRepository<EventMessage>
+    class ProductRepository : IRepository<Product>
     {
-        public EventMessage Create(EventMessage o)
+        public Product Create(Product o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.EventMessages == null)
+                if (db.Products == null)
                     return null;
-                db.EventMessages.Add(o);
+                db.Products.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<EventMessage> ReadAll()
+        public List<Product> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.EventMessages != null)
-                    return db.EventMessages.Include(eventMessage => eventMessage.ImageToHost).ToList();
-                return new List<EventMessage>();
+                if (db.Products != null)
+                    return db.Products.ToList();
+                return new List<Product>();
             }
         }
 
-        public EventMessage Read(int id)
+        public Product Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.EventMessages.Include("ImageToHost").FirstOrDefault(message => message.Id == id);
+                return db.Products.FirstOrDefault(product => product.Id == id);
             }
         }
 
-        public EventMessage Update(EventMessage o)
+        public Product Update(Product o)
         {
             using (var db = new GakuenContext())
             {
@@ -52,7 +51,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(EventMessage o)
+        public bool Delete(Product o)
         {
             using (var db = new GakuenContext())
             {

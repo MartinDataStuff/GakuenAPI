@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,8 +55,10 @@
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\AdminUser.cs" />
     <Compile Include="Entity\EventMessage.cs" />
-    <Compile Include="Entity\Image.cs" />
+    <Compile Include="Entity\ImageToHost.cs" />
     <Compile Include="Entity\NewsMessage.cs" />
+    <Compile Include="Entity\OrderList.cs" />
+    <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\Schedule.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Facade\RepositoryFacade.cs" />
@@ -64,8 +67,10 @@
     <Compile Include="Repository\AddressRepository.cs" />
     <Compile Include="Repository\AdminUserRepository.cs" />
     <Compile Include="Repository\EventMessageRepository.cs" />
-    <Compile Include="Repository\ImageRepository.cs" />
+    <Compile Include="Repository\ImageToHostRepository.cs" />
     <Compile Include="Repository\NewsMessageRepository.cs" />
+    <Compile Include="Repository\OrderListRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

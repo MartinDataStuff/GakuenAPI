@@ -148,7 +148,7 @@ window.Modernizr = (function( window, document, undefined ) {
       (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
       if ( !body ) {
-          //avoid crashing IE8, if background image is used
+          //avoid crashing IE8, if background imageToHost is used
           fakeBody.style.background = '';
           //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
           fakeBody.style.overflow = 'hidden';
@@ -648,14 +648,14 @@ window.Modernizr = (function( window, document, undefined ) {
          * dev.w3.org/csswg/css3-images/#gradients-
          */
 
-        var str1 = 'background-image:',
+        var str1 = 'background-imageToHost:',
             str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
             str3 = 'linear-gradient(left top,#9f9, white);';
 
         setCss(
              // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
               (str1 + '-webkit- '.split(' ').join(str2 + str1) +
-             // standard syntax             // trailing 'background-image:'
+             // standard syntax             // trailing 'background-imageToHost:'
               prefixes.join(str3 + str1)).slice(0, -str1.length)
         );
 

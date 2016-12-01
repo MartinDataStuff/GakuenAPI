@@ -16,6 +16,10 @@ namespace GakuenDLL.Entity
         public string Email { get; set; }
         public string PhoneNr { get; set; }
         public Address Address { get; set; }
+        public DateTime Birthday { get; set; }
+        public int ContactPersonPhoneNumber { get; set; }
+
+
 
         //Login information
         public string UserName { get; set; }

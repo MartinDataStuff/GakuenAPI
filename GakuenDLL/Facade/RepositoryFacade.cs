@@ -41,6 +41,11 @@ namespace GakuenDLL.Facade
             return new ImageToHostRepository(); 
         }
 
+        public IRepository<VideoToHost> GetVideoRepository()
+        {
+            return new VideoToHostRepository();
+        }
+
         public IRepository<OrderList> GetOrderListRepository()
         {
             return new OrderListRepository();

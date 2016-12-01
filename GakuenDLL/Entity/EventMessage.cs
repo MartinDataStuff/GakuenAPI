@@ -11,5 +11,6 @@ namespace GakuenDLL.Entity
         public string Title { get; set; }
         public string Body { get; set; }
         public ImageToHost ImageToHost { get; set; }
+        public VideoToHost VideoToHost { get; set; }
     }
 }

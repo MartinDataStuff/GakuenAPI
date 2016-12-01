@@ -61,6 +61,7 @@
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\Schedule.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\VideoToHost.cs" />
     <Compile Include="Facade\RepositoryFacade.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\VideoToHostRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -32,6 +32,7 @@ namespace GakuenDLL.Context
         public DbSet<NewsMessage> NewsMessages { get; set; }
         public DbSet<EventMessage> EventMessages { get; set; }
         public DbSet<ImageToHost> Images { get; set; }
+        public DbSet<VideoToHost> VideoToHosts { get; set; }
     }
 
     class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>
@@ -102,16 +103,23 @@ namespace GakuenDLL.Context
 
             ImageToHost imageToHost = context.Images.Add(new ImageToHost
             {
-
                 //Bytes = imgBytes,
+                ImagePath = "http://images5.fanpop.com/image/answers/2128000/2128709_1320189934337.28res_354_458.jpg",
                 ImageName = "Mad Girl"
+            });
+
+            VideoToHost videoToHost = context.VideoToHosts.Add(new VideoToHost
+            {
+                VideoPath = "https://www.youtube.com/watch?v=0yJn-5hpU94",
+                VideoName = "Anime Song"
             });
 
             NewsMessage newsMessage1 = context.NewsMessages.Add(new NewsMessage
             {
                 Title = "Open",
                 Body = "Så er butikken open for alle, glæder os til at se jer",
-                ImageToHost = imageToHost
+                ImageToHost = imageToHost,
+                VideoToHost = videoToHost
             });
 
             EventMessage eventMessage1 = context.EventMessages.Add(new EventMessage

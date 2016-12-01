@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,39 +9,41 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class NewsMessageRepository : IRepository<NewsMessage>
+    class VideoToHostRepository : IRepository<VideoToHost>
     {
-        public NewsMessage Create(NewsMessage o)
+        public VideoToHost Create(VideoToHost o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.NewsMessages == null)
+                if (db.VideoToHosts == null)
                     return null;
-                db.NewsMessages.Add(o);
+                db.VideoToHosts.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<NewsMessage> ReadAll()
+
+
+        public VideoToHost Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                if (db.NewsMessages != null)
-                    return db.NewsMessages.Include(newsMessage => newsMessage.ImageToHost).Include(newsMessage => newsMessage.VideoToHost).ToList();
-                return new List<NewsMessage>();
+                return db.VideoToHosts.FirstOrDefault(videoToHost => videoToHost.Id == id);
             }
         }
 
-        public NewsMessage Read(int id)
+        public List<VideoToHost> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                return db.NewsMessages.Include("ImageToHost").Include("VideoToHost").FirstOrDefault(message => message.Id == id);
+                if (db.VideoToHosts != null)
+                    return db.VideoToHosts.ToList();
+                return new List<VideoToHost>();
             }
         }
 
-        public NewsMessage Update(NewsMessage o)
+        public VideoToHost Update(VideoToHost o)
         {
             using (var db = new GakuenContext())
             {
@@ -52,7 +53,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(NewsMessage o)
+        public bool Delete(VideoToHost o)
         {
             using (var db = new GakuenContext())
             {

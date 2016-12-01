@@ -50,17 +50,12 @@ namespace GakuenDLL.Context
             List<Product> products = new List<Product>();
             products.Add(product1);
 
-            double fullPrice=0;
-            foreach (var product in products)
-            {
-                fullPrice += product.Price;
-            }
+   
 
             OrderList orderList1 = context.OrderLists.Add(new OrderList
             {
                 ItemsList = products,
-                PaidStringCode = "123abc",
-                PriceToPay = fullPrice
+                PaidStringCode = "123abc"
             });
 
             Address address1 = context.Addresses.Add(new Address

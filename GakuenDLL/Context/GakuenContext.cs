@@ -16,7 +16,7 @@ namespace GakuenDLL.Context
     {
         public GakuenContext() : base("name=Gakuen")
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
+            // Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
             Database.SetInitializer(new DatabaseInitializer());
         }
 
@@ -58,7 +58,7 @@ namespace GakuenDLL.Context
                 ItemsList = products,
                 PaidStringCode = "123abc"
             });
-
+            var orderLists = new List<OrderList> { orderList1 };
             Address address1 = context.Addresses.Add(new Address
             {
                 Country = "Denmark",
@@ -67,25 +67,24 @@ namespace GakuenDLL.Context
                 ZipCode = "6700"
             });
 
+
+
+
+            var schedule1 = context.Schedules.Add(new Schedule
+            {
+                Day = "Friday"
+            });
+            var schedules = new List<Schedule> { schedule1 };
+
             SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
             {
                 Minuttes = 40,
                 Name = "Japansk",
+                Schedules = schedules
             });
-            List<SchoolEvent> schoolEventList = new List<SchoolEvent>();
-            schoolEventList.Add(schoolEvent1);
+            var eventList = new List<SchoolEvent> { schoolEvent1 };
 
-
-            Schedule schedule1 = context.Schedules.Add(new Schedule
-            {
-                SchoolEvents = schoolEventList
-            });
-            List<Schedule> schedules = new List<Schedule>();
-            schedules.Add(schedule1);
-
-            List<OrderList> orderLists = new List<OrderList>();
-            orderLists.Add(orderList1);
-            User user1 = context.Users.Add(new User
+            var user1 = context.Users.Add(new User
             {
                 FirstName = "Torben",
                 LastName = "Sonson",
@@ -97,8 +96,12 @@ namespace GakuenDLL.Context
                 UserName = "ToSon@mail.com",
                 Position = User.Positions.Student,
                 OrderLists = orderLists,
-                Schedules = schedules
+                SchoolEvents = eventList,
+                Birthday = DateTime.Now
+
             });
+
+
 
 
             //byte[] imgBytes;

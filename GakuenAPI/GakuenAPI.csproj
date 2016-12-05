@@ -244,6 +244,7 @@
     <Compile Include="Controllers\NewsMessagesController.cs" />
     <Compile Include="Controllers\OrderListsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="Controllers\SchoolEventsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

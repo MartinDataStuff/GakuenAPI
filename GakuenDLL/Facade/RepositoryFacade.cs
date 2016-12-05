@@ -61,5 +61,9 @@ namespace GakuenDLL.Facade
             return new SchoolEventRepository();
         }
 
+        public IRepository<Schedule> GetScheduleRepository()
+        {
+            return new ScheduleRepository();
+        }
     }
 }

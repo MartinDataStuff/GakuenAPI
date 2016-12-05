@@ -33,7 +33,6 @@ namespace GakuenDLL.Entity
 
         //School oriented propaties
         public List<SchoolEvent> SchoolEvents { get; set; } = new List<SchoolEvent>();
-        public List<Schedule> Schedules { get; set; } = new List<Schedule>();
 
         public enum Positions
         {

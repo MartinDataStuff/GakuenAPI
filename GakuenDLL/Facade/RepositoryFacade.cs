@@ -56,5 +56,10 @@ namespace GakuenDLL.Facade
             return new ProductRepository();
         }
 
+        public IRepository<SchoolEvent> GetSchoolEvent()
+        {
+            return new SchoolEventRepository();
+        }
+
     }
 }

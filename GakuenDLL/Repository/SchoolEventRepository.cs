@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -11,39 +10,39 @@ using GakuenDLL.Interface;
 
 namespace GakuenDLL.Repository
 {
-    class UserRepository : IRepository<User>
+    class SchoolEventRepository : IRepository<SchoolEvent>
     {
-        public User Create(User o)
+        public SchoolEvent Create(SchoolEvent o)
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users == null)
+                if (db.SchoolEvents == null)
                     return null;
-                db.Users.Add(o);
+                db.SchoolEvents.Add(o);
                 db.SaveChanges();
                 return o;
             }
         }
 
-        public List<User> ReadAll()
+        public List<SchoolEvent> ReadAll()
         {
             using (var db = new GakuenContext())
             {
-                if (db.Users != null)
-                    return db.Users.Include(user => user.Address).ToList();
-                return new List<User>();
+                if (db.SchoolEvents != null)
+                    return db.SchoolEvents.ToList();
+                return new List<SchoolEvent>();
             }
         }
 
-        public User Read(int id)
+        public SchoolEvent Read(int id)
         {
             using (var db = new GakuenContext())
             {
-                return db.Users.Include("Address").FirstOrDefault(customer => customer.Id == id);
+                return db.SchoolEvents.FirstOrDefault(schoolEvent => schoolEvent.Id == id);
             }
         }
 
-        public User Update(User o)
+        public SchoolEvent Update(SchoolEvent o)
         {
             using (var db = new GakuenContext())
             {
@@ -53,7 +52,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-        public bool Delete(User o)
+        public bool Delete(SchoolEvent o)
         {
             using (var db = new GakuenContext())
             {

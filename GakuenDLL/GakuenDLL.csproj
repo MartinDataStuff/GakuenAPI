@@ -60,6 +60,7 @@
     <Compile Include="Entity\OrderList.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\Schedule.cs" />
+    <Compile Include="Entity\SchoolEvent.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\VideoToHost.cs" />
     <Compile Include="Facade\RepositoryFacade.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Repository\OrderListRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />
+    <Compile Include="Repository\SchoolEventRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\VideoToHostRepository.cs" />
   </ItemGroup>

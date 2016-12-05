@@ -32,7 +32,9 @@ namespace GakuenDLL.Entity
         public List<OrderList> OrderLists { get; set; } = new List<OrderList>();
 
         //School oriented propaties
-        public Schedule Schedule { get; set; }
+        public List<SchoolEvent> SchoolEvents { get; set; } = new List<SchoolEvent>();
+        public List<Schedule> Schedules { get; set; } = new List<Schedule>();
+
         public enum Positions
         {
             Teacher, Student

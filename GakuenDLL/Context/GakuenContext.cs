@@ -23,6 +23,7 @@ namespace GakuenDLL.Context
         public DbSet<Address> Addresses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<SchoolEvent> SchoolEvents { get; set; }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<OrderList> OrderLists { get; set; }
@@ -50,7 +51,7 @@ namespace GakuenDLL.Context
             List<Product> products = new List<Product>();
             products.Add(product1);
 
-   
+
 
             OrderList orderList1 = context.OrderLists.Add(new OrderList
             {
@@ -66,7 +67,21 @@ namespace GakuenDLL.Context
                 ZipCode = "6700"
             });
 
-            Schedule schedule = context.Schedules.Add(new Schedule());
+            SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
+            {
+                Minuttes = 40,
+                Name = "Japansk",
+            });
+            List<SchoolEvent> schoolEventList = new List<SchoolEvent>();
+            schoolEventList.Add(schoolEvent1);
+
+
+            Schedule schedule1 = context.Schedules.Add(new Schedule
+            {
+                SchoolEvents = schoolEventList
+            });
+            List<Schedule> schedules = new List<Schedule>();
+            schedules.Add(schedule1);
 
             List<OrderList> orderLists = new List<OrderList>();
             orderLists.Add(orderList1);
@@ -81,8 +96,8 @@ namespace GakuenDLL.Context
                 Password = "Hello123",
                 UserName = "ToSon@mail.com",
                 Position = User.Positions.Student,
-                Schedule = schedule,
-                OrderLists = orderLists
+                OrderLists = orderLists,
+                Schedules = schedules
             });
 
 

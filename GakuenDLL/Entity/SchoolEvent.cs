@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    public class Schedule : AbstractEntity
+    public class SchoolEvent : AbstractEntity
     {
-        public List<SchoolEvent> SchoolEvents { get; set; } = new List<SchoolEvent>();
+        public int Minuttes { get; set; }
+        public string Name { get; set; }
         public List<User> Users { get; set; } = new List<User>();
+        public List<Schedule> Schedules { get; set; } = new List<Schedule>();
     }
 }

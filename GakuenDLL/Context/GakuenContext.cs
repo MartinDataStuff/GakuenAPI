@@ -72,7 +72,7 @@ namespace GakuenDLL.Context
 
             var schedule1 = context.Schedules.Add(new Schedule
             {
-                Day = "Friday"
+                Day = Schedule.Days.Fredag
             });
             var schedules = new List<Schedule> { schedule1 };
 

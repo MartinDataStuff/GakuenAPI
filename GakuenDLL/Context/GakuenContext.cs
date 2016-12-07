@@ -34,6 +34,19 @@ namespace GakuenDLL.Context
         public DbSet<EventMessage> EventMessages { get; set; }
         public DbSet<ImageToHost> Images { get; set; }
         public DbSet<VideoToHost> VideoToHosts { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //many-to-many
+            modelBuilder.Entity<OrderList>()
+                .HasMany<Product>(list => list.ItemsList)
+                .WithMany(product => product.OrderLists);
+                
+
+            
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
     class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>

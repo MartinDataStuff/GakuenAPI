@@ -8,8 +8,6 @@ namespace GakuenDLL.Entity
 {
     public class OrderList : AbstractEntity
     {
-        private double _priceToPay;
-        private double _priceToPay1;
         public List<Product> ItemsList { get; set; } = new List<Product>();
         public User User { get; set; }
         public string PaidStringCode { get; set; }

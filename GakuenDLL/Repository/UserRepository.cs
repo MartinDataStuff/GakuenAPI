@@ -39,7 +39,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.Users.Include("Address").FirstOrDefault(customer => customer.Id == id);
+                return db.Users.Include(user => user.Address).FirstOrDefault(customer => customer.Id == id);
             }
         }
 

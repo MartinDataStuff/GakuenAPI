@@ -18,7 +18,10 @@ namespace GakuenDLL.Repository
             {
                 if (db.OrderLists == null)
                     return null;
-                
+                foreach (var product in o.ItemsList)
+                {
+                    db.Entry(product).State = EntityState.Unchanged;
+                }
                 db.OrderLists.Add(o);
                 db.SaveChanges();
                 return o;
@@ -39,7 +42,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.OrderLists.Include("Users").Include("Products").FirstOrDefault(list => list.Id == id);
+                return db.OrderLists.Include(orderList => orderList.User).Include(orderList => orderList.ItemsList).FirstOrDefault(list => list.Id == id);
             }
         }
 

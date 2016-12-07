@@ -38,7 +38,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.EventMessages.Include("ImageToHost").Include("VideoToHost").FirstOrDefault(message => message.Id == id);
+                return db.EventMessages.Include(eventMessage => eventMessage.ImageToHost).Include(newsMessage => newsMessage.VideoToHost).FirstOrDefault(message => message.Id == id);
             }
         }
 

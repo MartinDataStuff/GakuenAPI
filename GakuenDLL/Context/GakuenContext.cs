@@ -80,14 +80,14 @@ namespace GakuenDLL.Context
                 ZipCode = "6700"
             });
 
-
-
-
-            var schedule1 = context.Schedules.Add(new Schedule
+       var schedule1 = context.Schedules.Add(new Schedule
             {
-                Day = Schedule.Days.Fredag
+                Day = Schedule.Days.Fredag,
+                //SchoolEvents = eventList
             });
             var schedules = new List<Schedule> { schedule1 };
+
+            
 
             SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
             {
@@ -96,6 +96,8 @@ namespace GakuenDLL.Context
                 Schedules = schedules
             });
             var eventList = new List<SchoolEvent> { schoolEvent1 };
+
+     
 
             var user1 = context.Users.Add(new User
             {
@@ -111,9 +113,8 @@ namespace GakuenDLL.Context
                 OrderLists = orderLists,
                 SchoolEvents = eventList,
                 Birthday = DateTime.Now
-
             });
-
+            var userList = new List<User> { user1 };
 
 
 

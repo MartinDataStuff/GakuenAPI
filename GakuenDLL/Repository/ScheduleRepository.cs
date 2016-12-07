@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using GakuenDLL.Context;
@@ -28,7 +30,7 @@ namespace GakuenDLL.Repository
             using (var db = new GakuenContext())
             {
                 if (db.Schedules != null)
-                    return db.Schedules.ToList();
+                    return db.Schedules.Include(schedule => schedule.SchoolEvents).ToList();
                 return new List<Schedule>();
             }
         }
@@ -37,7 +39,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.Schedules.FirstOrDefault(schedule => schedule.Id == id);
+                return db.Schedules.Include(schedule => schedule.SchoolEvents).FirstOrDefault(schedule => schedule.Id == id);
             }
         }
 

@@ -29,7 +29,7 @@ namespace GakuenDLL.Repository
             using (var db = new GakuenContext())
             {
                 if (db.SchoolEvents != null)
-                    return db.SchoolEvents.Include(schoolEvent => schoolEvent.Schedules).Include(schoolEvent => schoolEvent.Users).ToList();
+                    return db.SchoolEvents.Include(schoolEvent => schoolEvent.Schedule).Include(schoolEvent => schoolEvent.Users).ToList();
                 return new List<SchoolEvent>();
             }
         }
@@ -38,7 +38,7 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                return db.SchoolEvents.Include(schoolEvent => schoolEvent.Schedules).Include(schoolEvent => schoolEvent.Users).FirstOrDefault(schoolEvent => schoolEvent.Id == id);
+                return db.SchoolEvents.Include(schoolEvent => schoolEvent.Schedule).Include(schoolEvent => schoolEvent.Users).FirstOrDefault(schoolEvent => schoolEvent.Id == id);
             }
         }
 

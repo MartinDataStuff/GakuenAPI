@@ -11,6 +11,6 @@ namespace GakuenDLL.Entity
         public int Minuttes { get; set; }
         public string Name { get; set; }
         public List<User> Users { get; set; } = new List<User>();
-        public List<Schedule> Schedules { get; set; } = new List<Schedule>();
+        public Schedule Schedule { get; set; }
     }
 }

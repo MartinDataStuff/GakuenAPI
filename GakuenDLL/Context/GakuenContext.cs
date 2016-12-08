@@ -85,15 +85,13 @@ namespace GakuenDLL.Context
                 Day = Schedule.Days.Fredag,
                 //SchoolEvents = eventList
             });
-            var schedules = new List<Schedule> { schedule1 };
-
             
 
             SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
             {
                 Minuttes = 40,
                 Name = "Japansk",
-                Schedules = schedules
+                Schedule = schedule1
             });
             var eventList = new List<SchoolEvent> { schoolEvent1 };
 

@@ -1532,7 +1532,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
   },
   'image': function() {
-    /// <summary>Selects all elements of type image.</summary>
+    /// <summary>Selects all elements of type imageToHost.</summary>
   },
   'index': function() {
     /// <signature>

@@ -96,7 +96,6 @@ namespace GakuenAPI.Controllers
             }
 
             _db.Delete(orderList);
-            
 
             return Ok(orderList);
         }

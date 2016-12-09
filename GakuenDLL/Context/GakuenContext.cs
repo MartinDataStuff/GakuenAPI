@@ -41,9 +41,9 @@ namespace GakuenDLL.Context
             modelBuilder.Entity<OrderList>()
                 .HasMany<Product>(list => list.ItemsList)
                 .WithMany(product => product.OrderLists);
-                
 
-            
+
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -80,12 +80,12 @@ namespace GakuenDLL.Context
                 ZipCode = "6700"
             });
 
-       var schedule1 = context.Schedules.Add(new Schedule
+            var schedule1 = context.Schedules.Add(new Schedule
             {
                 Day = Schedule.Days.Fredag,
                 //SchoolEvents = eventList
             });
-            
+
 
             SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
             {
@@ -95,7 +95,7 @@ namespace GakuenDLL.Context
             });
             var eventList = new List<SchoolEvent> { schoolEvent1 };
 
-     
+
 
             var user1 = context.Users.Add(new User
             {
@@ -126,11 +126,30 @@ namespace GakuenDLL.Context
             //    imgBytes = ms.ToArray();
             //}
 
-            ImageToHost imageToHost = context.Images.Add(new ImageToHost
+
+            ImageToHost imageToHost1 = context.Images.Add(new ImageToHost
             {
                 //Bytes = imgBytes,
                 ImagePath = "http://images5.fanpop.com/image/answers/2128000/2128709_1320189934337.28res_354_458.jpg",
                 ImageName = "Mad Girl"
+            });
+
+            ImageToHost imageToHost2 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "http://i697.photobucket.com/albums/vv339/his_baby_forever_and_always/anime%20girls/anime-girls-anime-3019250-800-600.jpg",
+                ImageName = "Cheerleader"
+            });
+
+            ImageToHost imageToHost3 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "https://myanimelist.cdn-dena.com/images/anime/12/70143.jpg",
+                ImageName = "Hot Men 4 Hot Day"
+            });
+
+            ImageToHost imageToHost4 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "http://i.imgur.com/0IKh3.jpg",
+                ImageName = "Teach me RAKI"
             });
 
             VideoToHost videoToHost = context.VideoToHosts.Add(new VideoToHost
@@ -143,15 +162,35 @@ namespace GakuenDLL.Context
             {
                 Title = "Open",
                 Body = "Så er butikken open for alle, glæder os til at se jer",
-                ImageToHost = imageToHost,
+                ImageToHost = imageToHost1,
                 VideoToHost = videoToHost
+            });
+
+            NewsMessage newsMessage2 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "Second News",
+                Body =
+                    "Spicy jalapeno drumstick pig kevin doner strip steak. Kielbasa turducken spare ribs flank. Frankfurter doner meatball shankle pork belly burgdoggen. Filet mignon picanha biltong, landjaeger pig capicola kevin jowl pork corned beef turkey tri-tip short loin. Frankfurter shankle jowl, boudin shoulder sausage salami short ribs biltong alcatra.",
+                ImageToHost = imageToHost2
+            });
+            NewsMessage newsMessage3 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "More News",
+                Body =
+"Does your lorem ipsum text long for something a little meatier ? Give our generator a try… it’s tasty!",
+                ImageToHost = imageToHost2
+            }); NewsMessage newsMessage4 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "New Line News",
+                Body = "Sirloin boudin short ribs, ham hock jerky shoulder t-bone brisket cupim strip steak ball tip pancetta spare ribs chuck. Ball tip drumstick beef ribs kevin tongue pastrami pig meatloaf. Kielbasa turducken capicola meatball drumstick venison burgdoggen landjaeger tail. Leberkas burgdoggen ground round, boudin shoulder bacon filet mignon corned beef. Boudin flank beef ribs chicken ball tip burgdoggen swine, bacon pastrami. Alcatra burgdoggen ribeye picanha beef ribs, beef biltong ham hock hamburger spare ribs meatloaf ball tip prosciutto boudin tongue.",
+                ImageToHost = imageToHost2
             });
 
             EventMessage eventMessage1 = context.EventMessages.Add(new EventMessage
             {
                 Title = "Glade dage",
                 Body = "Så er der dømt glade dage til jer alle",
-                ImageToHost = imageToHost
+                ImageToHost = imageToHost1
             });
 
             base.Seed(context);

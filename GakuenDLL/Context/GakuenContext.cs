@@ -178,12 +178,12 @@ namespace GakuenDLL.Context
                 Title = "More News",
                 Body =
 "Does your lorem ipsum text long for something a little meatier ? Give our generator a try… it’s tasty!",
-                ImageToHost = imageToHost2
+                ImageToHost = imageToHost3
             }); NewsMessage newsMessage4 = context.NewsMessages.Add(new NewsMessage
             {
                 Title = "New Line News",
                 Body = "Sirloin boudin short ribs, ham hock jerky shoulder t-bone brisket cupim strip steak ball tip pancetta spare ribs chuck. Ball tip drumstick beef ribs kevin tongue pastrami pig meatloaf. Kielbasa turducken capicola meatball drumstick venison burgdoggen landjaeger tail. Leberkas burgdoggen ground round, boudin shoulder bacon filet mignon corned beef. Boudin flank beef ribs chicken ball tip burgdoggen swine, bacon pastrami. Alcatra burgdoggen ribeye picanha beef ribs, beef biltong ham hock hamburger spare ribs meatloaf ball tip prosciutto boudin tongue.",
-                ImageToHost = imageToHost2
+                ImageToHost = imageToHost4
             });
 
             EventMessage eventMessage1 = context.EventMessages.Add(new EventMessage

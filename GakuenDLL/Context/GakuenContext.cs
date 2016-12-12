@@ -16,7 +16,7 @@ namespace GakuenDLL.Context
     {
         public GakuenContext() : base("name=Gakuen")
         {
-            // Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
+             //Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
             Database.SetInitializer(new DatabaseInitializer());
         }
 
@@ -49,7 +49,7 @@ namespace GakuenDLL.Context
         }
     }
 
-    class DatabaseInitializer : DropCreateDatabaseIfModelChanges<GakuenContext>
+    class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>
     {
         protected override void Seed(GakuenContext context)
         {
@@ -83,6 +83,7 @@ namespace GakuenDLL.Context
             var schedule1 = context.Schedules.Add(new Schedule
             {
                 Day = Schedule.Days.Fredag,
+                DateTime = DateTime.Now
                 //SchoolEvents = eventList
             });
 

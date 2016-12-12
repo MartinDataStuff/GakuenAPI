@@ -49,7 +49,7 @@ namespace GakuenDLL.Context
         }
     }
 
-    class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>
+    class DatabaseInitializer : DropCreateDatabaseIfModelChanges<GakuenContext>
     {
         protected override void Seed(GakuenContext context)
         {

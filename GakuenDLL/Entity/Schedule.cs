@@ -10,6 +10,7 @@ namespace GakuenDLL.Entity
     public class Schedule : AbstractEntity
     {
         public List<SchoolEvent> SchoolEvents { get; set; } = new List<SchoolEvent>();
+        public DateTime DateTime { get; set; }
 
         public enum Days
         {

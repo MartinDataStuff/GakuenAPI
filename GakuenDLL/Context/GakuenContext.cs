@@ -42,8 +42,10 @@ namespace GakuenDLL.Context
                 .HasMany<Product>(list => list.ItemsList)
                 .WithMany(product => product.OrderLists);
 
-
-
+            //One-to-Many
+            modelBuilder.Entity<SchoolEvent>()
+                .HasOptional<Schedule>(schoolEvent => schoolEvent.Schedule)
+                .WithMany(schedule => schedule.SchoolEvents);
 
             base.OnModelCreating(modelBuilder);
         }
@@ -111,8 +113,26 @@ namespace GakuenDLL.Context
                 Position = User.Positions.Student,
                 OrderLists = orderLists,
                 SchoolEvents = eventList,
-                Birthday = DateTime.Now
+                Birthday = DateTime.Now,
+                IsAdmin = true
             });
+
+            //var user2 = context.Users.Add(new User
+            //{
+            //    FirstName = "Morten",
+            //    LastName = "Sonson",
+            //    ConfirmedUser = true,
+            //    Address = address1,
+            //    Email = "ToAdmin@mail.com",
+            //    PhoneNr = "25252525",
+            //    Password = "Hello123",
+            //    UserName = "ToAdmin@mail.com",
+            //    Position = User.Positions.Teacher,
+            //    OrderLists = orderLists,
+            //    SchoolEvents = eventList,
+            //    Birthday = DateTime.Now,
+            //    IsAdmin = true
+            //});
             var userList = new List<User> { user1 };
 
 

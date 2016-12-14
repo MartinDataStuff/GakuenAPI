@@ -26,6 +26,7 @@ namespace GakuenDLL.Entity
         public string Password { get; set; }
         //Whether the user has accepted the confirm email
         public bool ConfirmedUser { get; set; }
+        public bool IsAdmin { get; set; }
         
         
         //Shop oriented propaties

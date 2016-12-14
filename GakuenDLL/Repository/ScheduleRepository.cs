@@ -19,6 +19,10 @@ namespace GakuenDLL.Repository
             {
                 if (db.Schedules == null)
                     return null;
+                foreach (var schoolEvent in o.SchoolEvents)
+                {
+                    db.Entry(schoolEvent).State = EntityState.Unchanged;
+                }
                 db.Schedules.Add(o);
                 db.SaveChanges();
                 return o;

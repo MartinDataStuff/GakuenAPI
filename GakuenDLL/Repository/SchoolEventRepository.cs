@@ -16,8 +16,19 @@ namespace GakuenDLL.Repository
         {
             using (var db = new GakuenContext())
             {
-                if (db.SchoolEvents == null)
-                    return null;
+                if (db.SchoolEvents == null) return null;
+
+                o.Schedule = db.Schedules.Include(schedule => schedule.SchoolEvents).FirstOrDefault(schedule => schedule.Id == o.Schedule.Id);
+
+                var tmpList = new List<User>();
+
+                foreach (var user1 in o.Users)
+                {
+                    tmpList.Add(db.Users.Include(user => user.Address).Include(user => user.OrderLists).Include(user => user.SchoolEvents).FirstOrDefault(user => user.Id == user1.Id));
+                }
+
+                o.Users = tmpList;
+
                 db.SchoolEvents.Add(o);
                 db.SaveChanges();
                 return o;

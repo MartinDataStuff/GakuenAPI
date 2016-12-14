@@ -25,6 +25,10 @@ namespace GakuenAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Fixeses self references problem
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling =
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

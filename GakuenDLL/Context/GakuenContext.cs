@@ -114,26 +114,26 @@ namespace GakuenDLL.Context
                 OrderLists = orderLists,
                 SchoolEvents = eventList,
                 Birthday = DateTime.Now,
-                IsAdmin = true
+                IsAdmin = false
             });
 
-            //var user2 = context.Users.Add(new User
-            //{
-            //    FirstName = "Morten",
-            //    LastName = "Sonson",
-            //    ConfirmedUser = true,
-            //    Address = address1,
-            //    Email = "ToAdmin@mail.com",
-            //    PhoneNr = "25252525",
-            //    Password = "Hello123",
-            //    UserName = "ToAdmin@mail.com",
-            //    Position = User.Positions.Teacher,
-            //    OrderLists = orderLists,
-            //    SchoolEvents = eventList,
-            //    Birthday = DateTime.Now,
-            //    IsAdmin = true
-            //});
-            var userList = new List<User> { user1 };
+            var user2 = context.Users.Add(new User
+            {
+                FirstName = "Morten",
+                LastName = "Sonson",
+                ConfirmedUser = true,
+                Address = null,
+                Email = "ToAdmin@mail.com",
+                PhoneNr = "25252525",
+                Password = "Hello123",
+                UserName = "ToAdmin@mail.com",
+                Position = User.Positions.Teacher,
+                OrderLists = null,
+                SchoolEvents = eventList,
+                Birthday = DateTime.Now,
+                IsAdmin = true
+            });
+            var userList = new List<User> { user1, user2 };
 
 
 

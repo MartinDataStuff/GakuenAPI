@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    [Table("User")]
     public class User : AbstractEntity
     {
         //Personal Information

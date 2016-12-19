@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/NewsMessages
         public List<NewsMessage> GetNewsMessages()
         {
+            //Reads all NewsMessages. 
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(NewsMessage))]
         public IHttpActionResult GetNewsMessage(int id)
         {
+            //Read NewsMessage with Id.
             NewsMessage newsMessage = _db.Read(id);
             if (newsMessage == null)
             {
@@ -55,6 +52,7 @@ namespace GakuenAPI.Controllers
 
             try
             {
+                //Updates NewsMessage.
                 _db.Update(newsMessage);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,7 +78,8 @@ namespace GakuenAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
+            //Creates NewsMessages
             _db.Create(newsMessage);
 
             return CreatedAtRoute("DefaultApi", new { id = newsMessage.Id }, newsMessage);
@@ -90,14 +89,15 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(NewsMessage))]
         public IHttpActionResult DeleteNewsMessage(int id)
         {
+            //Reads NewsMessage Id.
             NewsMessage newsMessage = _db.Read(id);
-
+            //Deletes NewsMessage.
             _db.Delete(newsMessage);
-
 
             return Ok(newsMessage);
         }
 
+        //Checks if NewsMessage exists by Id.
         private bool NewsMessageExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

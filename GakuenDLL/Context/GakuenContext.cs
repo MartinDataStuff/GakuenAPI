@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Entity;
-using GakuenDLL.Facade;
 
 namespace GakuenDLL.Context
 {
@@ -16,7 +9,7 @@ namespace GakuenDLL.Context
     {
         public GakuenContext() : base("name=Gakuen")
         {
-             //Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
             Database.SetInitializer(new DatabaseInitializer());
         }
 
@@ -37,12 +30,12 @@ namespace GakuenDLL.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //many-to-many
+            //Orderlist has many-to-many products.
             modelBuilder.Entity<OrderList>()
                 .HasMany<Product>(list => list.ItemsList)
                 .WithMany(product => product.OrderLists);
 
-            //One-to-Many
+            //SchoolEvent has 1 Schedule. Schedule has many SchoolEvents.
             modelBuilder.Entity<SchoolEvent>()
                 .HasOptional<Schedule>(schoolEvent => schoolEvent.Schedule)
                 .WithMany(schedule => schedule.SchoolEvents);
@@ -51,6 +44,7 @@ namespace GakuenDLL.Context
         }
     }
 
+    //Seeded Database.
     class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>
     {
         protected override void Seed(GakuenContext context)

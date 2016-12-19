@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/Schedules
         public List<Schedule> GetSchedules()
         {
+            //Reads all Schedules.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(Schedule))]
         public IHttpActionResult GetSchedule(int id)
         {
+            //Reads Schedule by Id.
             Schedule schedule = _db.Read(id);
             if (schedule == null)
             {
@@ -55,6 +52,7 @@ namespace GakuenAPI.Controllers
 
             try
             {
+                //Updates Schedule.
                 _db.Update(schedule);
             }
             catch (DbUpdateConcurrencyException)
@@ -81,6 +79,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates Schedule.
             _db.Create(schedule);
 
             return CreatedAtRoute("DefaultApi", new { id = schedule.Id }, schedule);
@@ -90,18 +89,20 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(Schedule))]
         public IHttpActionResult DeleteSchedule(int id)
         {
+            //Read Schedule by Id.
             Schedule schedule = _db.Read(id);
             if (schedule == null)
             {
                 return NotFound();
             }
 
+            //Deletes Schedule.
             _db.Delete(schedule);
 
             return Ok(schedule);
         }
        
-
+        //Checks if Schedule exists by Id.
         private bool ScheduleExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

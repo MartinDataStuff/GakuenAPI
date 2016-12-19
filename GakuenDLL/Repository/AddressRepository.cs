@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -11,6 +8,7 @@ namespace GakuenDLL.Repository
 {
     class AddressRepository : IRepository<Address>
     {
+        //Creates Address and save changes.
         public Address Create(Address o)
         {
             using (var db = new GakuenContext())
@@ -23,6 +21,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all Addresses.
         public List<Address> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -33,6 +32,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read Address with Id.
         public Address Read(int id)
         {
             using (var db = new GakuenContext())
@@ -41,6 +41,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates an Adress and save changes.
         public Address Update(Address o)
         {
             using (var db = new GakuenContext())
@@ -51,6 +52,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes an Address and save changes.
         public bool Delete(Address o)
         {
             using (var db = new GakuenContext())

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -12,6 +9,7 @@ namespace GakuenDLL.Repository
 {
     class OrderListRepository : IRepository<OrderList>
     {
+        //Creates OrderList and save changes.
         public OrderList Create(OrderList o)
         {
             using (var db = new GakuenContext())
@@ -28,6 +26,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all OrderLists.
         public List<OrderList> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -38,6 +37,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read OrderLists with Id.
         public OrderList Read(int id)
         {
             using (var db = new GakuenContext())
@@ -46,6 +46,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates an OrderLists and save changes.
         public OrderList Update(OrderList o)
         {
             using (var db = new GakuenContext())
@@ -56,6 +57,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes an OrderLists and save changes.
         public bool Delete(OrderList o)
         {
             using (var db = new GakuenContext())

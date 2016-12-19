@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -12,6 +9,7 @@ namespace GakuenDLL.Repository
 {
     class NewsMessageRepository : IRepository<NewsMessage>
     {
+        //Creates NewsMessage and save changes.
         public NewsMessage Create(NewsMessage o)
         {
             using (var db = new GakuenContext())
@@ -24,6 +22,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all NewsMessages.
         public List<NewsMessage> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -34,6 +33,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read NewsMessages with Id.
         public NewsMessage Read(int id)
         {
             using (var db = new GakuenContext())
@@ -42,6 +42,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates a NewsMessage and save changes.
         public NewsMessage Update(NewsMessage o)
         {
             using (var db = new GakuenContext())
@@ -52,6 +53,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes a NewsMessage and save changes.
         public bool Delete(NewsMessage o)
         {
             using (var db = new GakuenContext())

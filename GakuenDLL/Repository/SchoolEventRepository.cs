@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -12,6 +9,7 @@ namespace GakuenDLL.Repository
 {
     class SchoolEventRepository : IRepository<SchoolEvent>
     {
+        //Creates SchoolEvent and save changes.
         public SchoolEvent Create(SchoolEvent o)
         {
             using (var db = new GakuenContext())
@@ -35,6 +33,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all SchoolEvents.
         public List<SchoolEvent> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -45,6 +44,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read SchoolEvent with Id.
         public SchoolEvent Read(int id)
         {
             using (var db = new GakuenContext())
@@ -53,6 +53,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates a SchoolEvent and save changes.
         public SchoolEvent Update(SchoolEvent o)
         {
             using (var db = new GakuenContext())
@@ -63,6 +64,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes a SchoolEvent and save changes.
         public bool Delete(SchoolEvent o)
         {
             using (var db = new GakuenContext())

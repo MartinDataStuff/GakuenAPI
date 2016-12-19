@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/SchoolEvents
         public List<SchoolEvent> GetSchoolEvents()
         {
+            //Reads all SchoolEvents.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(SchoolEvent))]
         public IHttpActionResult GetSchoolEvent(int id)
         {
+            //Read School by Id.
             SchoolEvent schoolEvent = _db.Read(id);
             if (schoolEvent == null)
             {
@@ -54,6 +51,7 @@ namespace GakuenAPI.Controllers
             
             try
             {
+                //Updates SchoolEvent.
                 _db.Update(schoolEvent);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,6 +78,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates SchoolEvent
             _db.Create(schoolEvent);
             return CreatedAtRoute("DefaultApi", new { id = schoolEvent.Id }, schoolEvent);
         }
@@ -88,17 +87,20 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(SchoolEvent))]
         public IHttpActionResult DeleteSchoolEvent(int id)
         {
+            //Read SchoolEvent by Id.
             SchoolEvent schoolEvent = _db.Read(id);
             if (schoolEvent == null)
             {
                 return NotFound();
             }
 
+            //Deletes SchoolEvent.
             _db.Delete(schoolEvent);
 
             return Ok(schoolEvent);
         }
 
+        //Checks if SchoolEvent exists by Id.
        private bool SchoolEventExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/Users
         public List<User> GetUsers()
         {
+            //Reads all Users.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {
+            //Read User by Id.
             User user = _db.Read(id);
             if (user == null)
             {
@@ -51,9 +48,10 @@ namespace GakuenAPI.Controllers
             {
                 return BadRequest();
             }
-            
+
             try
             {
+                //Updates User.
                 _db.Update(user);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,6 +78,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates User.
             _db.Create(user);
 
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
@@ -89,13 +88,14 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
         {
+            //Read User by Id.
             User user = _db.Read(id);
+            //Deletes User.
             _db.Delete(user);
             return Ok(user);
         }
 
- 
-
+        //Checks if User exists by Id.
         private bool UserExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

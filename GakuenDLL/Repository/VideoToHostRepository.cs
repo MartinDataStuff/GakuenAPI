@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -11,6 +8,7 @@ namespace GakuenDLL.Repository
 {
     class VideoToHostRepository : IRepository<VideoToHost>
     {
+        //Creates VideoToHost and save changes.
         public VideoToHost Create(VideoToHost o)
         {
             using (var db = new GakuenContext())
@@ -23,8 +21,7 @@ namespace GakuenDLL.Repository
             }
         }
 
-
-
+        //Read List of all VideoToHosts.
         public VideoToHost Read(int id)
         {
             using (var db = new GakuenContext())
@@ -33,6 +30,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read VideoToHost with Id.
         public List<VideoToHost> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -43,6 +41,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates a VideoToHost and save changes.
         public VideoToHost Update(VideoToHost o)
         {
             using (var db = new GakuenContext())
@@ -53,6 +52,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes a VideoToHost and save changes.
         public bool Delete(VideoToHost o)
         {
             using (var db = new GakuenContext())

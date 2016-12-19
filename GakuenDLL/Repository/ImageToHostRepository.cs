@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -14,20 +8,9 @@ namespace GakuenDLL.Repository
 {
     class ImageToHostRepository : IRepository<ImageToHost>
     {
+        //Creates ImageToHost and save changes.
         public ImageToHost Create(ImageToHost o)
         {
-            //Convert Image to Bytes
-            //byte[] imgBytes;
-            //var loadedImage =
-            //    Image.FromFile(o.ImagePath);
-
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    loadedImage.Save(ms, ImageFormat.Jpeg);
-            //    imgBytes = ms.ToArray();
-            //}
-            //o.Bytes = imgBytes;
-
             using (var db = new GakuenContext())
             {
                 if (db.Images == null)
@@ -38,6 +21,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all ImageToHosts.
         public List<ImageToHost> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -48,6 +32,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read ImageToHost with Id.
         public ImageToHost Read(int id)
         {
             using (var db = new GakuenContext())
@@ -56,6 +41,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates an ImageToHost and save changes.
         public ImageToHost Update(ImageToHost o)
         {
             using (var db = new GakuenContext())
@@ -66,6 +52,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes an ImageToHost and save changes.
         public bool Delete(ImageToHost o)
         {
             using (var db = new GakuenContext())

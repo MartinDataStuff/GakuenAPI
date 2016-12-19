@@ -151,8 +151,8 @@ namespace GakuenDLL.Context
 
             ImageToHost imageToHost2 = context.Images.Add(new ImageToHost
             {
-                ImagePath = "http://i697.photobucket.com/albums/vv339/his_baby_forever_and_always/anime%20girls/anime-girls-anime-3019250-800-600.jpg",
-                ImageName = "Cheerleader"
+                ImagePath = "http://www.animeplus.tv/images/series/small/13.jpg",
+                ImageName = "Cheering"
             });
 
             ImageToHost imageToHost3 = context.Images.Add(new ImageToHost
@@ -163,8 +163,8 @@ namespace GakuenDLL.Context
 
             ImageToHost imageToHost4 = context.Images.Add(new ImageToHost
             {
-                ImagePath = "http://i.imgur.com/0IKh3.jpg",
-                ImageName = "Teach me RAKI"
+                ImagePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t34.0-12/15645256_1161155567270931_1187945786_n.png?oh=ebf1fe1f13f4ac0dc03f90fa72db4622&oe=585A363B",
+                ImageName = "School Body"
             });
 
             VideoToHost videoToHost = context.VideoToHosts.Add(new VideoToHost

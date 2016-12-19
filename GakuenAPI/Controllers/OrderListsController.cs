@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/OrderLists
         public List<OrderList> GetOrderLists()
         {
+            //Reads all OrderLists.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(OrderList))]
         public IHttpActionResult GetOrderList(int id)
         {
+            //Read OrderList by Id.
             OrderList orderList = _db.Read(id);
             if (orderList == null)
             {
@@ -54,6 +51,7 @@ namespace GakuenAPI.Controllers
             
             try
             {
+                //Updates OrderList.
                 _db.Update(orderList);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,6 +78,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates OrderList.
             _db.Create(orderList);
 
             return CreatedAtRoute("DefaultApi", new { id = orderList.Id }, orderList);
@@ -89,19 +88,20 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(OrderList))]
         public IHttpActionResult DeleteOrderList(int id)
         {
+            //Reads OrderList by Id.
             OrderList orderList = _db.Read(id);
             if (orderList == null)
             {
                 return NotFound();
             }
 
+            //Deletes OrderList.
             _db.Delete(orderList);
-            
 
             return Ok(orderList);
         }
 
- 
+        //Check if OrderList exists by Id.
         private bool OrderListExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

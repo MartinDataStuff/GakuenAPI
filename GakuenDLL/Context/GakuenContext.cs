@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Entity;
-using GakuenDLL.Facade;
 
 namespace GakuenDLL.Context
 {
@@ -16,7 +9,7 @@ namespace GakuenDLL.Context
     {
         public GakuenContext() : base("name=Gakuen")
         {
-            // Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<GakuenContext>());
             Database.SetInitializer(new DatabaseInitializer());
         }
 
@@ -37,18 +30,21 @@ namespace GakuenDLL.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //many-to-many
+            //Orderlist has many-to-many products.
             modelBuilder.Entity<OrderList>()
                 .HasMany<Product>(list => list.ItemsList)
                 .WithMany(product => product.OrderLists);
-                
 
-            
+            //SchoolEvent has 1 Schedule. Schedule has many SchoolEvents.
+            modelBuilder.Entity<SchoolEvent>()
+                .HasOptional<Schedule>(schoolEvent => schoolEvent.Schedule)
+                .WithMany(schedule => schedule.SchoolEvents);
 
             base.OnModelCreating(modelBuilder);
         }
     }
 
+    //Seeded Database.
     class DatabaseInitializer : DropCreateDatabaseAlways<GakuenContext>
     {
         protected override void Seed(GakuenContext context)
@@ -80,12 +76,13 @@ namespace GakuenDLL.Context
                 ZipCode = "6700"
             });
 
-       var schedule1 = context.Schedules.Add(new Schedule
+            var schedule1 = context.Schedules.Add(new Schedule
             {
                 Day = Schedule.Days.Fredag,
+                DateTime = DateTime.Now
                 //SchoolEvents = eventList
             });
-            
+
 
             SchoolEvent schoolEvent1 = context.SchoolEvents.Add(new SchoolEvent
             {
@@ -95,7 +92,7 @@ namespace GakuenDLL.Context
             });
             var eventList = new List<SchoolEvent> { schoolEvent1 };
 
-     
+
 
             var user1 = context.Users.Add(new User
             {
@@ -110,9 +107,27 @@ namespace GakuenDLL.Context
                 Position = User.Positions.Student,
                 OrderLists = orderLists,
                 SchoolEvents = eventList,
-                Birthday = DateTime.Now
+                Birthday = DateTime.Now,
+                IsAdmin = false
             });
-            var userList = new List<User> { user1 };
+
+            var user2 = context.Users.Add(new User
+            {
+                FirstName = "Morten",
+                LastName = "Sonson",
+                ConfirmedUser = true,
+                Address = null,
+                Email = "ToAdmin@mail.com",
+                PhoneNr = "25252525",
+                Password = "Hello123",
+                UserName = "ToAdmin@mail.com",
+                Position = User.Positions.Teacher,
+                OrderLists = null,
+                SchoolEvents = eventList,
+                Birthday = DateTime.Now,
+                IsAdmin = true
+            });
+            var userList = new List<User> { user1, user2 };
 
 
 
@@ -126,11 +141,30 @@ namespace GakuenDLL.Context
             //    imgBytes = ms.ToArray();
             //}
 
-            ImageToHost imageToHost = context.Images.Add(new ImageToHost
+
+            ImageToHost imageToHost1 = context.Images.Add(new ImageToHost
             {
                 //Bytes = imgBytes,
                 ImagePath = "http://images5.fanpop.com/image/answers/2128000/2128709_1320189934337.28res_354_458.jpg",
                 ImageName = "Mad Girl"
+            });
+
+            ImageToHost imageToHost2 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "http://www.animeplus.tv/images/series/small/13.jpg",
+                ImageName = "Cheering"
+            });
+
+            ImageToHost imageToHost3 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "https://myanimelist.cdn-dena.com/images/anime/12/70143.jpg",
+                ImageName = "Hot Men 4 Hot Day"
+            });
+
+            ImageToHost imageToHost4 = context.Images.Add(new ImageToHost
+            {
+                ImagePath = "https://scontent-arn2-1.xx.fbcdn.net/v/t34.0-12/15645256_1161155567270931_1187945786_n.png?oh=ebf1fe1f13f4ac0dc03f90fa72db4622&oe=585A363B",
+                ImageName = "School Body"
             });
 
             VideoToHost videoToHost = context.VideoToHosts.Add(new VideoToHost
@@ -143,15 +177,35 @@ namespace GakuenDLL.Context
             {
                 Title = "Open",
                 Body = "Så er butikken open for alle, glæder os til at se jer",
-                ImageToHost = imageToHost,
+                ImageToHost = imageToHost1,
                 VideoToHost = videoToHost
+            });
+
+            NewsMessage newsMessage2 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "Second News",
+                Body =
+                    "Spicy jalapeno drumstick pig kevin doner strip steak. Kielbasa turducken spare ribs flank. Frankfurter doner meatball shankle pork belly burgdoggen. Filet mignon picanha biltong, landjaeger pig capicola kevin jowl pork corned beef turkey tri-tip short loin. Frankfurter shankle jowl, boudin shoulder sausage salami short ribs biltong alcatra.",
+                ImageToHost = imageToHost2
+            });
+            NewsMessage newsMessage3 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "More News",
+                Body =
+"Does your lorem ipsum text long for something a little meatier ? Give our generator a try… it’s tasty!",
+                ImageToHost = imageToHost3
+            }); NewsMessage newsMessage4 = context.NewsMessages.Add(new NewsMessage
+            {
+                Title = "New Line News",
+                Body = "Sirloin boudin short ribs, ham hock jerky shoulder t-bone brisket cupim strip steak ball tip pancetta spare ribs chuck. Ball tip drumstick beef ribs kevin tongue pastrami pig meatloaf. Kielbasa turducken capicola meatball drumstick venison burgdoggen landjaeger tail. Leberkas burgdoggen ground round, boudin shoulder bacon filet mignon corned beef. Boudin flank beef ribs chicken ball tip burgdoggen swine, bacon pastrami. Alcatra burgdoggen ribeye picanha beef ribs, beef biltong ham hock hamburger spare ribs meatloaf ball tip prosciutto boudin tongue.",
+                ImageToHost = imageToHost4
             });
 
             EventMessage eventMessage1 = context.EventMessages.Add(new EventMessage
             {
                 Title = "Glade dage",
                 Body = "Så er der dømt glade dage til jer alle",
-                ImageToHost = imageToHost
+                ImageToHost = imageToHost1
             });
 
             base.Seed(context);

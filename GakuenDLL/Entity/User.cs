@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GakuenDLL.Entity
 {
-    [Table("User")]
     public class User : AbstractEntity
     {
         //Personal Information
@@ -26,6 +21,7 @@ namespace GakuenDLL.Entity
         public string Password { get; set; }
         //Whether the user has accepted the confirm email
         public bool ConfirmedUser { get; set; }
+        public bool IsAdmin { get; set; }
         
         
         //Shop oriented propaties

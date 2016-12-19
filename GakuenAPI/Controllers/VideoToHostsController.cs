@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/VideoToHosts
         public List<VideoToHost> GetVideoToHosts()
         {
+            //Reads all VideoToHosts.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(VideoToHost))]
         public IHttpActionResult GetVideoToHost(int id)
         {
+            //Read VideoToHost by Id.
             VideoToHost videoToHost = _db.Read(id);
             if (videoToHost == null)
             {
@@ -51,10 +48,11 @@ namespace GakuenAPI.Controllers
             {
                 return BadRequest();
             }
-            
+
 
             try
             {
+                //Updates VideoToHost.
                 _db.Update(videoToHost);
             }
             catch (DbUpdateConcurrencyException)
@@ -81,6 +79,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates VideoToHost.
             _db.Create(videoToHost);
 
             return CreatedAtRoute("DefaultApi", new { id = videoToHost.Id }, videoToHost);
@@ -90,19 +89,21 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(VideoToHost))]
         public IHttpActionResult DeleteVideoToHost(int id)
         {
+            //Read VideoToHost by Id.
             VideoToHost videoToHost = _db.Read(id);
             if (videoToHost == null)
             {
                 return NotFound();
             }
 
+            //Deletes VideoToHost.
             _db.Delete(videoToHost);
-       
+
 
             return Ok(videoToHost);
         }
 
-  
+        //Checks if VideoToHost exists by Id.
         private bool VideoToHostExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

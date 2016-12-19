@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -12,6 +9,7 @@ namespace GakuenDLL.Repository
 {
     class EventMessageRepository : IRepository<EventMessage>
     {
+        //Creates EventMessage and save changes.
         public EventMessage Create(EventMessage o)
         {
             using (var db = new GakuenContext())
@@ -24,6 +22,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all EventMessages.
         public List<EventMessage> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -34,6 +33,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read EventMessages with Id.
         public EventMessage Read(int id)
         {
             using (var db = new GakuenContext())
@@ -42,6 +42,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates an EventMessage and save changes.
         public EventMessage Update(EventMessage o)
         {
             using (var db = new GakuenContext())
@@ -52,6 +53,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes an EventMessage and save changes.
         public bool Delete(EventMessage o)
         {
             using (var db = new GakuenContext())

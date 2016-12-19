@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/EventMessages
         public List<EventMessage> GetEventMessages()
         {
+            //Reads all EventMessages.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(EventMessage))]
         public IHttpActionResult GetEventMessage(int id)
         {
+            //Read EventMessage with Id.
             EventMessage eventMessage = _db.Read(id);
             if (eventMessage == null)
             {
@@ -54,6 +51,7 @@ namespace GakuenAPI.Controllers
             
             try
             {
+                //Updates EventMessage
                 _db.Update(eventMessage);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,6 +78,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates EventMessages.
             _db.Create(eventMessage);
 
             return CreatedAtRoute("DefaultApi", new { id = eventMessage.Id }, eventMessage);
@@ -89,15 +88,16 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(EventMessage))]
         public IHttpActionResult DeleteEventMessage(int id)
         {
+            //Reads EventMessage Id.
             EventMessage eventMessage = _db.Read(id);
 
-
+            //Deletes EventMessage.
             _db.Delete(eventMessage);
 
             return Ok(eventMessage);
         }
  
-
+        //Checks EventMessage by Id.
         private bool EventMessageExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;

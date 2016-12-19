@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Interface;
@@ -11,6 +8,7 @@ namespace GakuenDLL.Repository
 {
     class ProductRepository : IRepository<Product>
     {
+        //Creates Product and save changes.
         public Product Create(Product o)
         {
             using (var db = new GakuenContext())
@@ -23,6 +21,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read List of all Products.
         public List<Product> ReadAll()
         {
             using (var db = new GakuenContext())
@@ -33,6 +32,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Read Products with Id.
         public Product Read(int id)
         {
             using (var db = new GakuenContext())
@@ -41,6 +41,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Updates a Product and save changes.
         public Product Update(Product o)
         {
             using (var db = new GakuenContext())
@@ -51,6 +52,7 @@ namespace GakuenDLL.Repository
             }
         }
 
+        //Deletes a Product and save changes.
         public bool Delete(Product o)
         {
             using (var db = new GakuenContext())

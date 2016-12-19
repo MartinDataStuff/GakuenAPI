@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using GakuenDLL.Context;
 using GakuenDLL.Entity;
 using GakuenDLL.Facade;
 using GakuenDLL.Interface;
@@ -22,6 +17,7 @@ namespace GakuenAPI.Controllers
         // GET: api/Images
         public List<ImageToHost> GetImages()
         {
+            //Reads all ImageToHosts.
             return _db.ReadAll();
         }
 
@@ -29,6 +25,7 @@ namespace GakuenAPI.Controllers
         [ResponseType(typeof(ImageToHost))]
         public IHttpActionResult GetImage(int id)
         {
+            //Read ImageToHost with Id.
             ImageToHost imageToHost = _db.Read(id);
             if (imageToHost == null)
             {
@@ -51,9 +48,10 @@ namespace GakuenAPI.Controllers
             {
                 return BadRequest();
             }
-            
+
             try
             {
+                //Updates ImageToHost.
                 _db.Update(imageToHost);
             }
             catch (DbUpdateConcurrencyException)
@@ -80,6 +78,7 @@ namespace GakuenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Creates ImageToHost.
             _db.Create(imageToHost);
 
             return CreatedAtRoute("DefaultApi", new { id = imageToHost.Id }, imageToHost);
@@ -95,12 +94,14 @@ namespace GakuenAPI.Controllers
                 return NotFound();
             }
 
+            //Deletes ImageToHost.
             _db.Delete(imageToHost);
 
             return Ok(imageToHost);
         }
 
-              private bool ImageExists(int id)
+        //Checks if Image exists by Id.
+        private bool ImageExists(int id)
         {
             return _db.ReadAll().Count(e => e.Id == id) > 0;
         }
